@@ -23,7 +23,6 @@ export function ProjectCard({title, description, image, badge, buttonText, link 
         whileHover={{ y: -8, transition: { duration: 0.2 } }}
       >
           <Card className="relative w-full pt-0">
-          {/* <div className="absolute inset-0 z-30 aspect-video bg-black/35" /> */}
           <img
               src={image}
               alt={title}

@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom"
+import { projects } from "@/data/projects"
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -10,6 +11,8 @@ import {
 } from "@/components/ui/navigation-menu"
 
 export default function Header() {
+  const projectLinks = projects.filter(p => p.id !== "about")
+
   return ( 
     <header className="w-full border-b px-4 flex items-center justify-between bg-card shadow-sm sticky top-0 z-50">
       <NavigationMenu className="p-4">
@@ -19,18 +22,22 @@ export default function Header() {
               <NavLink to="/" className={navigationMenuTriggerStyle()}>
                 Patrick Coleman
               </NavLink>
-        </NavigationMenuLink>
-      </NavigationMenuItem>
-    </NavigationMenuList>
-  </NavigationMenu>
-  <NavigationMenu>
-    <NavigationMenuList>
-      <NavigationMenuItem>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+        </NavigationMenuList>
+      </NavigationMenu>
+      <NavigationMenu>
+        <NavigationMenuList>
+          <NavigationMenuItem>
             <NavigationMenuTrigger>Projects</NavigationMenuTrigger>
             <NavigationMenuContent>
-              <NavigationMenuLink>Virtual Laboratories</NavigationMenuLink>
-              <NavigationMenuLink>Rabbits</NavigationMenuLink>
-              <NavigationMenuLink>Item 3</NavigationMenuLink>
+              {projectLinks.map(project => (
+                <NavigationMenuLink asChild key={project.id}>
+                  <NavLink to={project.link} className={navigationMenuTriggerStyle()}>
+                    {project.title}
+                  </NavLink>
+                </NavigationMenuLink>
+              ))}
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>

@@ -1,16 +1,39 @@
 import { Separator } from "@/components/ui/separator"
 import { NavLink } from "react-router-dom"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
-import {
-  Card,
-  CardAction,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
+
+const projects = [
+  { url: "https://patrickcoleman.github.io/BCMB3X03/", img: "/images/ladder.png", label: "Western Blot" },
+  { url: "https://patrickcoleman.github.io/Dot-Blot/", img: "/images/dotblotsmall.png", label: "Dot Blot" },
+  { url: "https://patrickcoleman.github.io/WesternBlot/", img: "/images/westernblotsmall.png", label: "Western Blot 2" },
+]
+interface ProjectCardProps {
+  url: string
+  img: string
+  label: string
+}
+
+function MiniProjectCard({ url, img, label }: ProjectCardProps) {
+  return (
+    <NavLink to={url} target="_blank" rel="noopener noreferrer" className="w-full">
+      <motion.div
+        initial={{ opacity: 0, x: -100 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.1 }}
+        whileHover={{ y: -8, transition: { duration: 0.1 } }}
+      >
+        <Card className="relative w-full pt-0 shadow-md border">
+          <img src={img} className="relative z-20 aspect-[16/2] w-full object-cover block" />
+          <div className="py-1 text-center">
+            <p className="text-sm font-semibold">{label}</p>
+          </div>
+        </Card>
+      </motion.div>
+    </NavLink>
+  )
+}
 
 export default function VirtualLaboratories() {
   return (
@@ -40,63 +63,9 @@ export default function VirtualLaboratories() {
         </div>
         <div className="flex flex-col-reverse md:flex-row gap-6">
           <div className="md:w-1/2 flex flex-col gap-3">
-            <NavLink to={"https://patrickcoleman.github.io/BCMB3X03/"} className="w-full">
-              <motion.div
-                  initial={{opacity: 0, x: -100}}
-                  whileInView={{opacity: 1, x: 0}}
-                  transition={{ duration: 1, ease: "easeOut" }}
-                  viewport={{ once: true, amount: 0.1 }}
-                  whileHover={{ y: -8, transition: { duration: 0.1 } }}
-                >  
-                <Card className="relative w-full pt-0 shadow-md border">
-                  <img
-                    src={"/images/ladder.png"}
-                    className="relative z-20 aspect-[16/2] w-full object-cover"
-                    />
-                  <div className="py-1 text-center border-t">
-                    <p className="text-sm font-semibold">Western Blot</p>
-                  </div>
-                </Card>
-              </motion.div>
-            </NavLink>
-            <NavLink to={"https://patrickcoleman.github.io/Dot-Blot/"} className="w-full">
-              <motion.div
-                  initial={{opacity: 0, x: -100}}
-                  whileInView={{opacity: 1, x: 0}}
-                  transition={{ duration: 1, ease: "easeOut" }}
-                  viewport={{ once: true, amount: 0.1 }}
-                  whileHover={{ y: -8, transition: { duration: 0.1 } }}
-                >  
-                <Card className="relative w-full pt-0 shadow-md border">
-                  <img
-                    src={"/images/dotblotsmall.png"}
-                    className="relative z-20 aspect-[16/2] w-full object-cover"
-                    />
-                  <div className="py-1 text-center border-t">
-                    <p className="text-sm font-semibold">Dot Blot</p>
-                  </div>
-                </Card>
-              </motion.div>
-            </NavLink>
-            <NavLink to={"https://patrickcoleman.github.io/WesternBlot/"} className="w-full">
-              <motion.div
-                  initial={{opacity: 0, x: -100}}
-                  whileInView={{opacity: 1, x: 0}}
-                  transition={{ duration: 1, ease: "easeOut" }}
-                  viewport={{ once: true, amount: 0.1 }}
-                  whileHover={{ y: -8, transition: { duration: 0.1 } }}
-                >  
-                <Card className="relative w-full pt-0 shadow-md border">
-                  <img
-                    src={"/images/westernblotsmall.png"}
-                    className="relative z-20 aspect-[16/2] w-full object-cover"
-                    />
-                  <div className="py-1 text-center border-t">
-                    <p className="text-sm font-semibold">Western Blot 2</p>
-                  </div>
-                </Card>
-              </motion.div>
-            </NavLink>
+            {projects.map((p) => (
+              <MiniProjectCard key={p.url} {...p} />
+            ))}
           </div>
           <div className="md:w-1/2 flex flex-col gap-3 justify-around">
             <div>

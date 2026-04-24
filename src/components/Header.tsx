@@ -14,7 +14,9 @@ export default function Header() {
   const projectLinks = projects.filter(p => p.id !== "about")
 
   return ( 
-    <header className="w-full border-b px-4 flex items-center justify-between bg-card shadow-sm sticky top-0 z-50">
+    <header
+      style={{ height: "var(--header-height)" }}
+      className="w-full border-b px-4 flex items-center justify-between bg-card shadow-sm sticky top-0 z-50 height ">
       <NavigationMenu className="p-4">
         <NavigationMenuList>
           <NavigationMenuItem>

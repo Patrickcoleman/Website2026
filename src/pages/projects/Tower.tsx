@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 
 export default function Tower() {
   const [scale, setScale] = useState(1/3)

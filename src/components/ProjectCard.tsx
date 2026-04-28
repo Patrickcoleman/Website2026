@@ -1,18 +1,16 @@
 import { motion } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
 import {
   Card,
   CardAction,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
 import { NavLink } from "react-router-dom"
 import type { Project } from "@/data/projects"
 
-export function ProjectCard({title, description, image, badge, buttonText, link }: Project) {
+export function ProjectCard({title, description, image, badge, link }: Project) {
   return (
     <NavLink to={link} className="w-full">
       <motion.div

@@ -42,7 +42,7 @@ export default function Blog() {
             className="w-1/2 mx-auto"
             opts={{
               align: "start",
-              loop: true,
+              loop: false,
             }}
           >
             <CarouselContent>

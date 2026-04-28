@@ -21,7 +21,7 @@ export default function Blog() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    fetch(`http://localhost:3000/day/${id}`)
+    fetch(`${import.meta.env.VITE_API_URL}/day/${id}`)
       .then(res => res.json())
       .then(data => {
         console.log(data)
@@ -49,7 +49,7 @@ export default function Blog() {
               {(entry.imagenames ?? []).map((name, i) => (
                 <CarouselItem key={i}>
                   <img
-                    src={`http://localhost:3000/images/${name}`}
+                    src={`${import.meta.env.VITE_API_URL}/images/${name}`}
                     className="w-full"
                   />
                 </CarouselItem>

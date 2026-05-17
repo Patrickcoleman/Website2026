@@ -12,8 +12,15 @@ import { useState, useEffect } from "react"
 
 export function BlogSideBar() {
   const { id } = useParams()
+  const startDate = new Date(2025, 3, 28)
   const [date, setDate] = useState<Date | undefined>(undefined)
+  const [month, setMonth] = useState<Date>(
+  id ? new Date(startDate.getTime() + Number(id) * 24 * 60 * 60 * 1000) : new Date(2025, 3))
   const navigate = useNavigate()
+
+  useEffect(() => {
+  if (id) setMonth(new Date(startDate.getTime() + Number(id) * 24 * 60 * 60 * 1000))
+  }, [id])
   
   useEffect(() => {
       if (!date) return
@@ -22,7 +29,6 @@ export function BlogSideBar() {
       navigate(`${DayIdToPostId(Number(diffDays))}`)
     }, [date])
 
-  const startDate = new Date(2025, 3, 28)
 
   //This function mays the actual day number of the trip (eg 5th day), to the ID of the post, as some entried span multiple days
   function DayIdToPostId(id: number): number {
@@ -39,6 +45,21 @@ export function BlogSideBar() {
     return id - 12
   }
 
+  //Yes this is ugly, but writing a function to reverse the selection using the previous function was uglier
+  function postIdToDay(postId: number): number {
+  if (postId <= 18) return postId
+  if (postId == 19) return 19
+  if (postId <= 72) return postId + 2
+  if (postId == 72) return 73
+  if (postId <= 112) return postId + 7
+  if (postId == 112) return 113
+  if (postId <= 181) return postId + 9
+  if (postId == 181) return 182
+  if (postId <= 184) return postId + 11
+  if (postId == 184) return 185
+  return postId + 12
+}
+
   return (
     <Sidebar>
       <SidebarHeader>
@@ -48,12 +69,12 @@ export function BlogSideBar() {
         <Calendar
             mode="single"
             className="rounded-lg border mx-auto"
-            selected={(id ? new Date(startDate.getTime() + Number(id) * 24 * 60 * 60 * 1000) : undefined)}
+            selected={(id ? new Date(startDate.getTime() + postIdToDay(Number(id)) * 24 * 60 * 60 * 1000) : undefined)}
             onSelect={(d) => {
               setDate(d)
             }}
-            defaultMonth={new Date(2025, 3)}
-            startMonth={new Date(2025, 3)}
+            month={month}
+            onMonthChange={setMonth}
             endMonth={new Date(2025, 10)}
             hidden={{
               before: new Date(2025, 3, 28),

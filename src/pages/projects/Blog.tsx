@@ -49,6 +49,7 @@ export default function Blog() {
               {(entry.imagenames ?? []).map((name, i) => (
                 <CarouselItem key={i}>
                   <img
+                    loading="lazy"
                     src={`${import.meta.env.VITE_API_URL}/images/${name}`}
                     className="w-full"
                   />

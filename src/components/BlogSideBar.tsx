@@ -14,11 +14,7 @@ export function BlogSideBar() {
   const { id } = useParams()
   const [date, setDate] = useState<Date | undefined>(undefined)
   const navigate = useNavigate()
-
-  function idToDate(){
-    
-  }
-
+  
   useEffect(() => {
       if (!date) return
       const diffMs = date.getTime() - startDate.getTime()

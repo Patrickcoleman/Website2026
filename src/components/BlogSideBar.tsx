@@ -5,18 +5,31 @@ import {
   SidebarGroup,
   SidebarHeader,
 } from "@/components/ui/sidebar"
-import { NavLink, useNavigate } from "react-router-dom"
+import { NavLink, useNavigate, useParams  } from "react-router-dom"
 import { Calendar } from "@/components/ui/calendar"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 
 export function BlogSideBar() {
+  const { id } = useParams()
   const [date, setDate] = useState<Date | undefined>(undefined)
   const navigate = useNavigate()
 
+  function idToDate(){
+    
+  }
+
+  useEffect(() => {
+      if (!date) return
+      const diffMs = date.getTime() - startDate.getTime()
+      const diffDays = Math.round(diffMs / (1000 * 60 * 60 * 24))
+      navigate(`${DayIdToPostId(Number(diffDays))}`)
+    }, [date])
+
   const startDate = new Date(2025, 3, 28)
 
-  function mapDay(id: number): number {
+  //This function mays the actual day number of the trip (eg 5th day), to the ID of the post, as some entried span multiple days
+  function DayIdToPostId(id: number): number {
     if (id <= 18) return id
     if (id <= 21) return 19
     if (id <= 73) return id - 2
@@ -39,13 +52,9 @@ export function BlogSideBar() {
         <Calendar
             mode="single"
             className="rounded-lg border mx-auto"
-            selected={date}
+            selected={(id ? new Date(startDate.getTime() + Number(id) * 24 * 60 * 60 * 1000) : undefined)}
             onSelect={(d) => {
-              if (!d) return
               setDate(d)
-              const diffMs = d.getTime() - startDate.getTime()
-              const diffDays = Math.round(diffMs / (1000 * 60 * 60 * 24))
-              navigate(`${mapDay(Number(diffDays))}`)
             }}
             defaultMonth={new Date(2025, 3)}
             startMonth={new Date(2025, 3)}

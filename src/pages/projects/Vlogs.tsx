@@ -52,7 +52,7 @@ export default function vlogs() {
               top: `${blog.y}%`,
               transform: "translate(-50%, -50%)"
             }}
-            className="absolute w-8 h-8 bg-red-500 rounded-full flex items-center justify-center font-bold text-xl"
+            className="absolute w-2 h-2 md:w-8 md:h-8 bg-red-500 rounded-full flex items-center justify-center font-bold text-xs md:text-xl"
             onMouseEnter={() => setActive(blog)}
           >
             {blog.number}

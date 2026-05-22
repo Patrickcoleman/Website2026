@@ -11,7 +11,7 @@ import Tower from "./pages/projects/Tower"
 
 import Blog from "./pages/projects/Blog"
 import BlogHome from "./pages/projects/BlogHome"
-import Fish from "./pages/Fish"
+import Vlogs from "./pages/projects/Vlogs"
 
 export default function App() {
   return (
@@ -24,7 +24,7 @@ export default function App() {
         <Route path="/projects/rabbits" element={<Rabbits />} />
         <Route path="/projects/VirtualLaboratories" element={<VirtualLaboratories />} />
         <Route path="/projects/tower" element={<Tower />} />
-        <Route path="/projects/fish" element={<Fish />} />
+        <Route path="/projects/vlogs" element={<Vlogs />} />
         <Route path="/projects/blog" element={<BlogLayout />}>
           <Route path="home" element={<BlogHome />} />
           <Route path=":id" element={<Blog />} />

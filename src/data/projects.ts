@@ -4,7 +4,6 @@ export interface Project {
   description: string
   image: string
   badge: string
-  buttonText: string
   link: string
 }
 
@@ -15,7 +14,6 @@ export const projects: Project[] = [
     description: "I like writing code.",
     image: "/images/mecrop.png",
     badge: "About",
-    buttonText: "Read More",
     link: "/about",
   },
   {
@@ -24,7 +22,6 @@ export const projects: Project[] = [
     description: "Data generating virtual laboratories for remote STEM education.",
     image: "/images/dotblot.png",
     badge: "C#, Unity",
-    buttonText: "View Project",
     link: "/projects/virtuallaboratories",
   },
   {
@@ -33,7 +30,6 @@ export const projects: Project[] = [
     description: "A simulation showcasing how species evolve to cope with a changing environment.",
     image: "/images/rabbits.png",
     badge: "C#, Unity",
-    buttonText: "View Project",
     link: "/projects/rabbits",
   },
   {
@@ -42,25 +38,22 @@ export const projects: Project[] = [
     description: "A small roguelike game.",
     image: "/images/tower.png",
     badge: "C#, Unity",
-    buttonText: "View Project",
     link: "/projects/tower",
   },
   {
     id: "blog",
-    title: "Travel Blog",
-    description: "Blog posts from a 6 month hitchhiking trip I undertook from Australia to Germany",
+    title: "Hitchhiking: Australia to Germany",
+    description: "Blog posts from a 6 month hitchhiking trip I undertook from Australia to Germany.",
     image: "/images/map.png",
-    badge: "New",
-    buttonText: "Read Blogs",
+    badge: "Travel",
     link: "/projects/blog/home",
   },
   {
-    id: "fish",
-    title: "Fish",
-    description: "A project about fish.",
-    image: "/images/fish.png",
-    badge: "WIP",
-    buttonText: "View Project",
-    link: "/projects/fish",
+    id: "vlog",
+    title: "Hitchhiking: Sydney to Perth",
+    description: "Vlogs from a 3 week cross country hitchhiking adventure.",
+    image: "/images/australia_map.png",
+    badge: "Travel",
+    link: "/projects/vlogs",
   },
 ]

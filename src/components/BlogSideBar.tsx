@@ -2,12 +2,12 @@ import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
-  SidebarGroup,
   SidebarHeader,
 } from "@/components/ui/sidebar"
 import { NavLink, useNavigate, useParams  } from "react-router-dom"
 import { Calendar } from "@/components/ui/calendar"
 import { useState, useEffect } from "react"
+import { Button } from "@/components/ui/button"
 
 
 export function BlogSideBar() {
@@ -15,11 +15,11 @@ export function BlogSideBar() {
   const startDate = new Date(2025, 3, 28)
   const [date, setDate] = useState<Date | undefined>(undefined)
   const [month, setMonth] = useState<Date>(
-  id ? new Date(startDate.getTime() + Number(id) * 24 * 60 * 60 * 1000) : new Date(2025, 3))
+  id ? dayToDate(postIdToDay(Number(id))) : new Date(2025, 3))
   const navigate = useNavigate()
 
   useEffect(() => {
-  if (id) setMonth(new Date(startDate.getTime() + Number(id) * 24 * 60 * 60 * 1000))
+  if (id) setMonth(dayToDate(postIdToDay(Number(id))))
   }, [id])
   
   useEffect(() => {
@@ -29,6 +29,11 @@ export function BlogSideBar() {
       navigate(`${DayIdToPostId(Number(diffDays))}`)
     }, [date])
 
+  function dayToDate(days: number): Date {
+    const date = new Date(2025, 3, 28)
+    date.setDate(date.getDate() + days)
+    return date
+  }
 
   //This function mays the actual day number of the trip (eg 5th day), to the ID of the post, as some entried span multiple days
   function DayIdToPostId(id: number): number {
@@ -69,7 +74,7 @@ export function BlogSideBar() {
         <Calendar
             mode="single"
             className="rounded-lg border mx-auto"
-            selected={(id ? new Date(startDate.getTime() + postIdToDay(Number(id)) * 24 * 60 * 60 * 1000) : undefined)}
+            selected={(id ? dayToDate(postIdToDay(Number(id))) : undefined)}
             onSelect={(d) => {
               setDate(d)
             }}
@@ -81,8 +86,18 @@ export function BlogSideBar() {
               after: new Date(2025, 10, 11)
             }}      
         />
-        <SidebarGroup />
-        <SidebarGroup />
+        <Button 
+          className="rounded-lg border mx-auto mt-5" 
+          variant="outline"
+          onClick={() => {
+            const start = new Date(2025, 3, 28).getTime()
+            const end = new Date(2025, 10, 11).getTime()
+            const random = new Date(start + Math.random() * (end - start))
+            setDate(random)
+          }}
+        >
+          Random Entry
+        </Button>
       </SidebarContent>
       <SidebarFooter />
     </Sidebar>

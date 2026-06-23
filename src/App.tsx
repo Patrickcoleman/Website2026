@@ -13,6 +13,8 @@ import Blog from "./pages/projects/Blog"
 import BlogHome from "./pages/projects/BlogHome"
 import Vlogs from "./pages/projects/Vlogs"
 
+import Clock from "./pages/projects/Clock"
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -29,6 +31,7 @@ export default function App() {
           <Route path="home" element={<BlogHome />} />
           <Route path=":id" element={<Blog />} />
         </Route>
+        <Route path="/projects/clock" element={<Clock />} />
       </Routes>
     </BrowserRouter>
   )

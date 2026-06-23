@@ -56,4 +56,12 @@ export const projects: Project[] = [
     badge: "Travel",
     link: "/projects/vlogs",
   },
+  {
+    id: "clock",
+    title: "The Block Clock",
+    description: "A visualisation of time using CSS animations",
+    image: "/images/fish.png",
+    badge: "CSS",
+    link: "/projects/clock",
+  },
 ]

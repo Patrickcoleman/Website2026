@@ -23,7 +23,7 @@ const CLICKABLE_SQUARES: ClickableSquare[] = [
   { row: 17, col: 1, text: "The Australian Tectonic Plate will have drifted almost 30km in the intervening 453 thousand years." },
   { row: 20, col: 0, text: "Uranus' moon Desdemona will most likely have collided with another of it's inner moons, either Cressida or Juliet, in the next 98.1 million years."},
   { row: 21, col: 0, text: "A Uranium-235 isotope will have lived out most of its 783 million year half life." },
-  { row: 22, col: 1, text: "In 7 billion years the sun will have decayed into a red dwarf, signalling the final phase for our solar system." },
+  { row: 22, col: 1, text: "In 7 billion years the sun will have decayed into a red dwarf, signalling the final phase for our solar system, and I don't think our clock will be needed longer than that." },
 ]
 
 const CLICKABLE_MAP = new Map(
@@ -84,6 +84,9 @@ export default function Clock() {
         <p >
           Each second, a red square will appear in the first row. When a row is full, it will convert to a single square in the next row.
         </p>
+        <p >
+          This means that this is a base 5 clock, and each row will take 5 times longer to fill than the previous one. The first row will take 5 seconds to fill, the second row 25 seconds, and so on...
+        </p>  
         <p >
           Click on the highlighted squares to see what will have happened by the time they are filled.
         </p>  

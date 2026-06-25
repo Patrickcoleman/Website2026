@@ -60,7 +60,7 @@ export const projects: Project[] = [
     id: "clock",
     title: "The Block Clock",
     description: "A visualisation of time using CSS animations",
-    image: "/images/fish.png",
+    image: "/images/clock.png",
     badge: "CSS",
     link: "/projects/clock",
   },

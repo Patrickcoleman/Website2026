@@ -17,7 +17,7 @@ const CLICKABLE_SQUARES: ClickableSquare[] = [
   { row: 7, col: 3, text: "3,917,559 babies will have been born globally in the 11 days it takes to fill this square." },
   { row: 8, col: 1, text: "If you left now and walked at ~5km/h, you could walk the entiretly of France's land border in this 32 days." },
   { row: 10, col: 2, text: "If you planted a mango tree seed now, you would get ripe reddish fruit from the fully mature tree before this square ripened in just under 5 years." },
-  { row: 12, col: 3, text: "You not be alive to see this square turn red in 116 years. ;(" },
+  { row: 12, col: 3, text: "You will not be alive to see this square turn red in 116 years. ;(" },
   { row: 13, col: 2, text: "In 1047 years, a snail that left now could have made it to the moon!" },
   { row: 14, col: 2, text: "A Carbon-14 isotope will have lived out its 5700 year half life." },
   { row: 17, col: 1, text: "The Australian Tectonic Plate will have drifted almost 30km in the intervening 453 thousand years." },

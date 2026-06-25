@@ -97,7 +97,7 @@ export default function Clock() {
       {/* Top: Title and Subtitle */}
 
       {/* Left: clock */}
-      <div className="col-span-2 flex items-center justify-center">
+      <div className="col-span-2 flex items-start justify-center">
         <div
           style={{
             display: "grid",
